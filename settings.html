@@ -5,229 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings - ToKa Fitness</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="settings.css">
     <link href="fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script>
-        // Apply theme immediately to prevent flash
-        (function() {
-            const savedTheme = localStorage.getItem('tokaFitnessTheme') || 'light';
-            const savedFontSize = localStorage.getItem('tokaFitnessFontSize') || 'medium';
-            
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            
-            // Apply font size
-            switch(savedFontSize) {
-                case 'small':
-                    document.documentElement.style.fontSize = '14px';
-                    break;
-                case 'large':
-                    document.documentElement.style.fontSize = '18px';
-                    break;
-                default:
-                    document.documentElement.style.fontSize = '16px';
-            }
-        })();
-    </script>
-    <style>
-        .settings-container {
-            max-width: 600px;
-            margin: 100px auto;
-            padding: 40px;
-            background-color: var(--card-background);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            border: 2px solid var(--border-color);
-        }
-        
-        .settings-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .settings-header h1 {
-            color: var(--text-primary);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .settings-header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-        
-        .settings-section {
-            margin-bottom: 30px;
-            padding: 30px;
-            background: linear-gradient(135deg, var(--background-primary), rgba(78, 205, 196, 0.05));
-            border-radius: 15px;
-            border: 2px solid var(--border-color);
-        }
-        
-        .settings-section h2 {
-            color: var(--text-primary);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .settings-option {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            margin: 15px 0;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            background-color: var(--card-background);
-            transition: all 0.3s ease;
-        }
-        
-        .settings-option:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .option-info h3 {
-            margin-bottom: 5px;
-            color: var(--text-primary);
-            font-size: 1.2rem;
-        }
-        
-        .option-info p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        .option-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .select-dropdown {
-            padding: 12px 20px;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            background-color: var(--card-background);
-            color: var(--text-primary);
-            font-family: inherit;
-            cursor: pointer;
-            transition: border-color 0.3s ease;
-            font-size: 1rem;
-            min-width: 120px;
-        }
-        
-        .select-dropdown:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-        
-        .toggle-switch {
-            position: relative;
-            width: 60px;
-            height: 30px;
-            background-color: #ccc;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .toggle-switch.active {
-            background-color: var(--primary-color);
-        }
-        
-        .toggle-slider {
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 24px;
-            height: 24px;
-            background-color: white;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        .toggle-switch.active .toggle-slider {
-            transform: translateX(30px);
-        }
-        
-        .back-button {
-            margin-bottom: 30px;
-        }
-        
-        .save-button {
-            width: 100%;
-            margin-top: 30px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .save-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: var(--shadow-hover);
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-        }
-    </style>
+
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2>ToKa Fitness</h2>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item dropdown">
-                    <a href="index.html" class="nav-link dropdown-toggle">Home <span class="dropdown-arrow">▼</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="index.html#about" class="dropdown-link">About</a></li>
-                        <li><a href="index.html#programs" class="dropdown-link">Programs</a></li>
-                        <li><a href="index.html#membership" class="dropdown-link">Membership</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="settings.html" class="nav-link">⚙️ Settings</a>
-                </li>
-                <li class="nav-item">
-                    <a href="sign-in.html" class="nav-link sign-in-btn" id="authButton">👤 Sign In</a>
-                </li>
-
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+       <nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <h2>ToKa Fitness</h2>
         </div>
-    </nav>
+        <ul class="nav-menu">
+            <li class="nav-item dropdown">
+                <a href="index.html" class="nav-link dropdown-toggle">Home <span class="dropdown-arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html#about" class="dropdown-link">About</a></li>
+                    <li><a href="index.html#programs" class="dropdown-link">Programs</a></li>
+                    <li><a href="index.html#membership" class="dropdown-link">Membership</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="trainers.html" class="nav-link">Trainers</a>
+            </li>
+            <li class="nav-item">
+                <a href="settings.html" class="nav-link">Settings</a>
+            </li>
+            <li class="nav-item">
+                <a href="sign-in.php" class="nav-link sign-in-btn" id="authButton">Sign In</a>
+            </li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+</nav>
+
 
     <div class="container">
         <div class="settings-container">
@@ -268,6 +82,16 @@
                     </div>
                 </div>
             </div>
+                        <!--screen reader HTML-->
+        <div id="screen-reader-controls">
+            <button id="toggle-reader">Toggle Screen Reader</button>
+            <label>
+                Speed: <input type="range" id="speed-control" min="0.5" max="2" step="0.1" value="1">
+            </label>
+            <label>
+                Voice: <select id="voice-select"></select>
+            </label>
+        </div>
             
             <button class="save-button" onclick="saveSettings()">Save Settings</button>
         </div>
@@ -278,124 +102,8 @@
         Settings saved successfully!
     </div>
 
-    <script>
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link, .dropdown-link').forEach(n => n.addEventListener('click', (e) => {
-            // Don't close menu if it's the dropdown toggle
-            if (!e.target.classList.contains('dropdown-toggle')) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        }));
-
-        // Dropdown functionality - Fixed
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdown = document.querySelector('.dropdown');
-            const dropdownToggle = document.querySelector('.dropdown-toggle');
-
-            if (dropdownToggle) {
-                dropdownToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    dropdown.classList.toggle('active');
-                });
-            }
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function(e) {
-                if (dropdown && !dropdown.contains(e.target)) {
-                    dropdown.classList.remove('active');
-                }
-            });
-
-            // Load settings
-            loadSettings();
-        });
-
-        // Toggle switch functionality with immediate theme application
-        document.getElementById('dark-mode-toggle').addEventListener('click', function() {
-            this.classList.toggle('active');
-            const isDarkMode = this.classList.contains('active');
-            const theme = isDarkMode ? 'dark' : 'light';
-            
-            // Apply theme immediately
-            applyTheme(theme);
-            
-            // Save to localStorage immediately
-            localStorage.setItem('tokaFitnessTheme', theme);
-        });
-
-        function loadSettings() {
-            // Load font size setting from localStorage
-            const savedFontSize = localStorage.getItem('tokaFitnessFontSize') || 'medium';
-            document.getElementById('font-size-select').value = savedFontSize;
-            applyFontSize(savedFontSize);
-            
-            // Load theme setting from localStorage
-            const savedTheme = localStorage.getItem('tokaFitnessTheme') || 'light';
-            const darkModeToggle = document.getElementById('dark-mode-toggle');
-            if (savedTheme === 'dark') {
-                darkModeToggle.classList.add('active');
-            }
-            applyTheme(savedTheme);
-        }
-
-        function saveSettings() {
-            const fontSize = document.getElementById('font-size-select').value;
-            const isDarkMode = document.getElementById('dark-mode-toggle').classList.contains('active');
-            const theme = isDarkMode ? 'dark' : 'light';
-            
-            // Save to localStorage
-            localStorage.setItem('tokaFitnessFontSize', fontSize);
-            localStorage.setItem('tokaFitnessTheme', theme);
-            
-            // Apply settings immediately
-            applyFontSize(fontSize);
-            applyTheme(theme);
-            
-            // Show notification
-            const notification = document.getElementById('notification');
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
-        function applyFontSize(size) {
-            const root = document.documentElement;
-            switch(size) {
-                case 'small':
-                    root.style.fontSize = '14px';
-                    break;
-                case 'large':
-                    root.style.fontSize = '18px';
-                    break;
-                default:
-                    root.style.fontSize = '16px';
-            }
-        }
-
-        function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-        }
-
-        // Apply font size changes immediately when dropdown changes
-        document.getElementById('font-size-select').addEventListener('change', function() {
-            applyFontSize(this.value);
-            // Auto-save font size when changed
-            localStorage.setItem('tokaFitnessFontSize', this.value);
-        });
-    </script>
+<script src = "settings.js"></script>
+   
 </body>
 </html>
 
